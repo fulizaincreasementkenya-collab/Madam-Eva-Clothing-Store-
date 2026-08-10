@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MADAM EVA BOUTIQUE & FULL OUTFIT</title>
+
+  <meta name="description"
+    content="Madam Eva Boutique & Full Outfit - Fashion, complete outfits and free transportation.">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+  <div class="brand">
+    <span class="brand-main">MADAM EVA</span>
+    <span class="brand-sub">BOUTIQUE & FULL OUTFIT</span>
+  </div>
+
+  <div class="header-actions">
+    <button onclick="scrollToShop()">SHOP</button>
+
+    <button class="cart-button" onclick="openCart()">
+      🛍️ <span id="cartCount">0</span>
+    </button>
+  </div>
+
+</header>
+
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <p class="eyebrow">ELEGANCE • STYLE • CONFIDENCE</p>
+
+    <h1>
+      YOUR STYLE.<br>
+      YOUR STATEMENT.
+    </h1>
+
+    <p>
+      Discover carefully selected fashion pieces and
+      complete outfits from Madam Eva Boutique.
+    </p>
+
+    <button onclick="scrollToShop()" class="primary-button">
+      SHOP COLLECTION
+    </button>
+
+  </div>
+
+</section>
+
+
+<div class="free-delivery">
+
+  🚚 <strong>FREE TRANSPORTATION</strong>
+
+  <span>
+    You only pay for the items you order.
+  </span>
+
+</div>
+
+
+<section class="shop" id="shop">
+
+  <div class="section-heading">
+
+    <p>OUR COLLECTION</p>
+
+    <h2>Find Your Perfect Look</h2>
+
+  </div>
+
+
+  <div class="shop-tools">
+
+    <input
+      type="search"
+      id="search"
+      placeholder="Search dresses, shoes, outfits..."
+      oninput="searchProducts()"
+    >
+
+    <div class="categories">
+
+      <button class="category active"
+        onclick="filterProducts('all', this)">
+        All
+      </button>
+
+      <button class="category"
+        onclick="filterProducts('women', this)">
+        Women
+      </button>
+
+      <button class="category"
+        onclick="filterProducts('men', this)">
+        Men
+      </button>
+
+      <button class="category"
+        onclick="filterProducts('dresses', this)">
+        Dresses
+      </button>
+
+      <button class="category"
+        onclick="filterProducts('shoes', this)">
+        Shoes
+      </button>
+
+      <button class="category"
+        onclick="filterProducts('accessories', this)">
+        Accessories
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="products" id="products"></div>
+
+</section>
+
+
+<section class="features">
+
+  <div>
+    <span>🚚</span>
+    <h3>Free Transportation</h3>
+    <p>No separate delivery charge.</p>
+  </div>
+
+  <div>
+    <span>💳</span>
+    <h3>Secure M-Pesa Payment</h3>
+    <p>Pay securely through an STK Push.</p>
+  </div>
+
+  <div>
+    <span>✨</span>
+    <h3>Quality Fashion</h3>
+    <p>Beautiful pieces selected for you.</p>
+  </div>
+
+</section>
+
+
+<footer>
+
+  <div class="footer-brand">
+    MADAM EVA BOUTIQUE & FULL OUTFIT
+  </div>
+
+  <p>
+    Fashion • Full Outfits • Free Transportation
+  </p>
+
+  <p class="copyright">
+    © 2026 Madam Eva Boutique. All rights reserved.
+  </p>
+
+</footer>
+
+
+<!-- CART -->
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+<aside class="cart" id="cart">
+
+  <div class="cart-header">
+
+    <h2>Your Cart</h2>
+
+    <button onclick="closeCart()">×</button>
+
+  </div>
+
+
+  <div id="cartItems"></div>
+
+
+  <div class="cart-summary">
+
+    <div>
+      <span>Subtotal</span>
+      <strong id="subtotal">KSh 0</strong>
+    </div>
+
+    <div>
+      <span>Transportation</span>
+      <strong class="free">FREE</strong>
+    </div>
+
+    <div class="grand-total">
+      <span>Total</span>
+      <strong id="cartTotal">KSh 0</strong>
+    </div>
+
+  </div>
+
+
+  <button
+    class="checkout-button"
+    onclick="openCheckout()">
+
+    PROCEED TO CHECKOUT
+
+  </button>
+
+</aside>
+
+
+<!-- CHECKOUT -->
+
+<div class="modal" id="checkoutModal">
+
+  <div class="modal-box">
+
+    <button class="modal-close"
+      onclick="closeCheckout()">×</button>
+
+    <div class="checkout-title">
+
+      <p>SECURE CHECKOUT</p>
+
+      <h2>Complete Your Order</h2>
+
+    </div>
+
+
+    <div id="checkoutSummary"></div>
+
+
+    <form id="checkoutForm">
+
+      <label>Full Name</label>
+
+      <input
+        type="text"
+        id="customerName"
+        placeholder="Enter your full name"
+        required
+      >
+
+
+      <label>M-Pesa Phone Number</label>
+
+      <input
+        type="tel"
+        id="customerPhone"
+        placeholder="07XXXXXXXX"
+        required
+      >
+
+
+      <label>Delivery Location</label>
+
+      <input
+        type="text"
+        id="customerLocation"
+        placeholder="Town / Area / Estate"
+        required
+      >
+
+
+      <label>Additional Address</label>
+
+      <textarea
+        id="customerAddress"
+        placeholder="Building, landmark, stage etc."
+      ></textarea>
+
+
+      <div class="free-checkout">
+
+        🚚 Transportation
+
+        <strong>FREE</strong>
+
+      </div>
+
+
+      <div class="pay-total">
+
+        <span>Total to Pay</span>
+
+        <strong id="checkoutTotal">KSh 0</strong>
+
+      </div>
+
+
+      <button type="submit" class="pay-button">
+
+        🔒 PAY WITH M-PESA
+
+      </button>
+
+      <p class="payment-note">
+        After clicking Pay, an M-Pesa STK Push will be
+        sent to the phone number entered above.
+      </p>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- PAYMENT STATUS -->
+
+<div class="modal" id="paymentModal">
+
+  <div class="modal-box payment-box">
+
+    <div id="paymentIcon">📱</div>
+
+    <h2 id="paymentTitle">
+      Check Your Phone
+    </h2>
+
+    <p id="paymentMessage">
+      An M-Pesa payment request has been sent.
+      Enter your M-Pesa PIN to complete the payment.
+    </p>
+
+    <div class="loader" id="paymentLoader"></div>
+
+    <div id="orderNumber"></div>
+
+    <button
+      class="secondary-button"
+      onclick="closePayment()">
+
+      CLOSE
+
+    </button>
+
+  </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
